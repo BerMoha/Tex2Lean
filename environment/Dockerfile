@@ -3,20 +3,16 @@ FROM leanprover/lean4:v4.33.0
 USER root
 WORKDIR /workspace
 
-# Copy everything into the isolated evaluation container
+# Copie tous les fichiers de votre dépôt dans le conteneur
 COPY . .
 
-# Navigate dynamically to the authoring folder and initialize the Lean configuration
+# Configuration d'un projet Lean 4 purement local (zéro téléchargement internet)
 RUN cd authoring && \
-    if [ ! -f lakefile.toml ] && [ ! -f lakefile.lean ]; then \
-        echo '[[dependency]]' > lakefile.toml && \
-        echo 'name = "mathlib"' >> lakefile.toml && \
-        echo 'git = "https://github.com"' >> lakefile.toml && \
-        echo 'rev = "v4.33.0"' >> lakefile.toml; \
-    fi && \
-    lake update
+    echo 'name = "drazin"' > lakefile.toml && \
+    echo 'version = "0.1.0"' >> lakefile.toml && \
+    echo 'default_target = "drazin"' >> lakefile.toml && \
+    echo '[[lean_lib]]' >> lakefile.toml && \
+    echo 'name = "Tex2lean"' >> lakefile.toml
 
-# Pre-compile the theorem to cache dependencies inside the image
-RUN cd authoring && lake build Tex2lean.Model.Theorem || true
 
 

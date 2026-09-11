@@ -1,4 +1,4 @@
-# Drazin Invertibility Task
+# Formalization of Drazin Invertibility
 
 ## Difficulty
 The problem requires defining a custom Drazin invertibility structure with index k=1 and proving a structured direct sum decomposition of a ring, which requires exact manipulation of Mathlib ring axioms.

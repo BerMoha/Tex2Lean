@@ -1,5 +1,5 @@
 [task]
-name = "afterquery/drazin-theorem-proving"
+name = "afterquery/drazin-theorem"
 description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4."
 authors = [{ name = "[Votre Nom Complet]", email = "[votre.email@example.com]" }]
 keywords = ["lean4", "drazin-inverse", "ring-theory", "direct-sum"]

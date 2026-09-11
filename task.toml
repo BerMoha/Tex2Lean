@@ -1,13 +1,16 @@
+schema_version = "1.4"
+artifacts = ["/workspace/authoring/Tex2lean/Model/Theorem.lean"]
+
 [task]
-name = "aq/drazin-theorem"
-description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4."
-authors = [{ name = "[Votre Nom Complet]", email = "[votre.email@example.com]" }]
-keywords = ["lean4", "drazin-inverse", "ring-theory", "direct-sum"]
+name = "afterquery/drazin-theorem"
+description = "Lean 4 formalization of Proposition 2.4 regarding Drazin invertibility at index 1."
+authors = [{ name = "Mohammed Berkani", email = "author@example.com" }]
+keywords = ["lean4", "drazin", "ring-theory", "direct-sum"]
 
 [metadata]
-author_name = "[Votre Nom Complet]"
-author_email = "[votre.email@example.com]"
-author_organization = "[Votre Université ou Organisation]"
+author_name = "Mohammed Berkani"
+author_email = "author@example.com"
+author_organization = "University"
 author_profile = "https://github.com"
 conflicts_of_interest = "None"
 domain = "mathematical-sciences"
@@ -32,4 +35,9 @@ environment_mode = "separate"
 network_mode = "no-network"
 
 [environment]
+build_timeout_sec = 1800.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 20480
+gpus = 0
 network_mode = "public"

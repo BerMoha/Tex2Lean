@@ -1,8 +1,8 @@
 [task]
-name = "afterquery/drazin-theorem"
-description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4 and Mathlib."
+name = "drazin-theorem-proving"
+description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4."
 authors = [{ name = "[Votre Nom Complet]", email = "[votre.email@example.com]" }]
-keywords = ["lean4", "mathlib", "drazin-inverse", "ring-theory", "direct-sum"]
+keywords = ["lean4", "drazin-inverse", "ring-theory", "direct-sum"]
 
 [metadata]
 author_name = "[Votre Nom Complet]"
@@ -15,7 +15,7 @@ field = "formal-mathematics"
 subfield = "operator-theory"
 category = "Science"
 subcategory = "Formal Mathematics & Theorem Proving"
-tags = ["lean4", "mathlib", "ring-theory"]
+tags = ["lean4", "ring-theory"]
 expert_time_estimate_hours = 2
 relevant_experience = "Mathematics and interactive theorem proving in Lean 4."
 difficulty_explanation = "The problem requires defining a custom Drazin invertibility structure with index k=1 and proving a structured direct sum decomposition of a ring, which requires exact manipulation of Mathlib ring axioms."

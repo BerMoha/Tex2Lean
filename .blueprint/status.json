@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "paper": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex",
+  "updatedAt": "2026-09-11T12:02:32.362Z",
+  "nodes": [
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#423062fc5f74",
+      "kind": "statement",
+      "label": "}\n\\newcommand{\\eet}{",
+      "detail": "theorem",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:17",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#4269c9ce7b57",
+      "kind": "statement",
+      "label": "}\n\\newcommand{\\elm}{",
+      "detail": "lemma",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:19",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#343dc249ac08",
+      "kind": "statement",
+      "label": "}\n\\newcommand{\\eprop}{",
+      "detail": "proposition",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:21",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#0bfe9451c461",
+      "kind": "statement",
+      "label": "}\n\\newcommand{\\ecor}{",
+      "detail": "corollary",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:23",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#ce6c46361849",
+      "kind": "statement",
+      "label": "\\rm}\n\\newcommand{\\edf}{",
+      "detail": "definition",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:25",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#d7521fc86c42",
+      "kind": "statement",
+      "label": "\\rm}\n\\newcommand{\\eex}{",
+      "detail": "other",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:29",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "at:f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex#56e23f6532c5",
+      "kind": "statement",
+      "label": "\\rm}\n\\newcommand{\\eremark}{",
+      "detail": "other",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:31",
+      "state": "none",
+      "dependsOn": []
+    },
+    {
+      "key": "label:thm1",
+      "kind": "statement",
+      "label": "thm1",
+      "paperLabel": "thm1",
+      "detail": "theorem",
+      "location": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex:115",
+      "state": "none",
+      "dependsOn": []
+    }
+  ]
+}

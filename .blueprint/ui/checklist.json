@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "id": "plan:t3/restatement",
+      "label": "Work out what the paper claims",
+      "stage": "theorem",
+      "milestone": true,
+      "group": "plan:t3",
+      "target": "t3",
+      "groupLabel": "Planning · proposition",
+      "status": "running",
+      "detail": "an agent is reading the paper",
+      "startedAt": 1789128218558
+    },
+    {
+      "id": "plan:t3/filePlan",
+      "label": "Write the theorem into lean/, a file at a time",
+      "stage": "theorem",
+      "milestone": true,
+      "group": "plan:t3",
+      "target": "t3",
+      "status": "pending"
+    },
+    {
+      "id": "plan:t3/decomposition",
+      "label": "Design interface, instance, capstone",
+      "stage": "proof",
+      "milestone": true,
+      "group": "plan:t3",
+      "target": "t3",
+      "status": "pending"
+    },
+    {
+      "id": "plan:t3/briefs",
+      "label": "Pursue the proof autonomously",
+      "stage": "proof",
+      "milestone": true,
+      "group": "plan:t3",
+      "target": "t3",
+      "status": "pending"
+    },
+    {
+      "id": "restatement:agent/brief-0",
+      "label": ".blueprint/in-progress/restatement.agent.json — Work out what the paper claims",
+      "group": "restatement:agent",
+      "series": "surface",
+      "stage": "theorem",
+      "groupLabel": "Read the paper",
+      "status": "running",
+      "detail": "searching for .blueprint/**/*",
+      "startedAt": 1789128218649
+    },
+    {
+      "id": "deps/copy",
+      "label": "Copy this machine's Lean libraries",
+      "group": "deps",
+      "groupLabel": "Lean project · lean/",
+      "status": "running",
+      "startedAt": 1789128220194
+    }
+  ],
+  "notes": {},
+  "root": "f:\\Dossier-recherche\\Publications\\Publications\\P41- B-Fredholm elements in rings and algebras.tex"
+}

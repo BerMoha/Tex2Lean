@@ -1,5 +1,37 @@
+
 [task]
 name = "afterquery/drazin-theorem"
+description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4 and Mathlib."
+authors = [{ name = "[Votre Nom Complet]", email = "[votre.email@example.com]" }]
+keywords = ["lean4", "mathlib", "drazin-inverse", "ring-theory", "direct-sum"]
+
+[metadata]
+author_name = "[Votre Nom Complet]"
+author_email = "[votre.email@example.com]"
+author_organization = "[Votre Université ou Organisation]"
+author_profile = "https://github.com"
+conflicts_of_interest = "None"
 domain = "mathematical-sciences"
 field = "formal-mathematics-theorem-proving"
-gpus = 0
+subfield = "operator-theory"
+category = "Science"
+subcategory = "Math"
+tags = ["lean4", "mathlib", "ring-theory"]
+expert_time_estimate_hours = 2
+relevant_experience = "Mathematics and interactive theorem proving in Lean 4."
+difficulty_explanation = "The problem requires defining a custom Drazin invertibility structure with index k=1 and proving a structured direct sum decomposition of a ring, which requires exact manipulation of Mathlib ring axioms."
+solution_explanation = "The reference solution sets up a robust algebraic structure for Drazin invertibility, builds explicit range and kernel conditions, and implements a complete constructive bidirectional proof for the direct sum."
+verification_explanation = "Verification runs `lake build` on the custom target module to guarantee that Lean 4 fully compiles and validates the formal proof without any placeholders or remaining sorry steps."
+
+[agent]
+timeout_sec = 1800
+
+[verifier]
+environment_mode = "separate"
+
+[verifier.environment]
+network_mode = "no-network"
+
+[environment]
+network_mode = "public"
+

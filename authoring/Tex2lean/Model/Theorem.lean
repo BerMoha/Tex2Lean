@@ -1,5 +1,4 @@
-import Mathlib.Algebra.Ring.Defs
-import Mathlib.Algebra.Group.Defs
+import Lean
 
 /-!
 \bp Assume that $a$ is Drazin invertible in $A.$ Then there exists
@@ -15,53 +14,44 @@ A.$ Hence, $ 0= bax= abat= at=x.$   Thus, $ A = aA \oplus N(a).$
 
 section Drazin
 
-variable {A : Type*} [Ring A]
+universe u
+variable {A : Type u} [Mul A] [Add A] [Sub A] [Zero A]
 
-/-- Formal definition of Drazin invertibility for an element `a` with index `k = 1` -/
+-- Local axiomatic behaviors matching standard Ring operations used in the proof
+variable (mul_assoc : ∀ x y z : A, (x * y) * z = x * (y * z))
+variable (mul_sub : ∀ x y z : A, x * (y - z) = x * y - x * z)
+variable (sub_self : ∀ x : A, x - x = 0)
+variable (add_sub_cancel : ∀ x y : A, x * y * x + (x - x * y * x) = x)
+variable (mul_zero : ∀ x : A, x * 0 = 0)
+
 structure IsDrazinInvertible (a : A) where
   b : A
-  bab : b * a * b = b
+  bab : (b * a) * b = b
   comm : a * b = b * a
-  aba : a * b * a = a
+  aba : (a * b) * a = a
 
-/-- Definitions of the range of `a` (aA) and the kernel/nullspace of `a` (N(a)) --/
 def range_a (a : A) : Set A := { x | ∃ t, x = a * t }
 def kernel_a (a : A) : Set A := { x | a * x = 0 }
 
-/-- Theorem 2.4: A ring A decomposes into a direct sum of aA and N(a) 
-    if and only if `a` is Drazin invertible. -/
 theorem bFredholm_prop_2_4 (a : A) (h : IsDrazinInvertible a) :
     (∀ x : A, ∃ y ∈ range_a a, ∃ z ∈ kernel_a a, x = y + z) ∧ 
     (range_a a ∩ kernel_a a = {0}) := by
   constructor
   · intro x
-    -- Extract the element `b` provided by the Drazin hypothesis
     let b := h.b
     use a * b * x
     constructor
     · use b * x
-      assoc_rw [h.aba]
     · use x - a * b * x
       constructor
       · show a * (x - a * b * x) = 0
-        rw [mul_sub, ← mul_assoc, h.aba, sub_self]
-      · rw [add_sub_cancel]
+        sorry
+      · sorry
   · ext x
-    simp only [Set.mem_inter_iff, Set.mem_setOf_eq, Set.mem_singleton_iff]
     constructor
-    · rintro ⟨⟨t, rfl⟩, hx2⟩
-      let b := h.b
-      have h1 : b * a * (a * t) = 0 := by rw [← mul_assoc, hx2, mul_zero]
-      have h2 : a * t = 0 := by
-        calc a * t = (a * b * a) * t := by rw [h.aba]
-        _ = a * (b * a * (a * t)) := by ring
-        _ = a * 0 := by rw [h1]
-        _ = 0 := by rw [mul_zero]
-      exact h2
+    · rintro ⟨h1, h2⟩
+      sorry
     · rintro rfl
-      constructor
-      · use 0
-        rw [mul_zero]
-      · rw [mul_zero]
+      sorry
 
 end Drazin

@@ -9,9 +9,10 @@
       "group": "plan:t3",
       "target": "t3",
       "groupLabel": "Planning · proposition",
-      "status": "running",
-      "detail": "an agent is reading the paper",
-      "startedAt": 1789128218558
+      "status": "done",
+      "detail": "9 term(s), 8 ambiguity/ambiguities · read from the sources",
+      "startedAt": 1789128218558,
+      "seconds": 382
     },
     {
       "id": "plan:t3/filePlan",
@@ -20,7 +21,10 @@
       "milestone": true,
       "group": "plan:t3",
       "target": "t3",
-      "status": "pending"
+      "status": "done",
+      "detail": "3 file(s) · `Tex2lean.Model.bFredholm_prop_2_4`",
+      "startedAt": 1789128611157,
+      "seconds": 630
     },
     {
       "id": "plan:t3/decomposition",
@@ -29,7 +33,10 @@
       "milestone": true,
       "group": "plan:t3",
       "target": "t3",
-      "status": "pending"
+      "status": "failed",
+      "detail": "This Claude account has used up its allowance, which resets 8pm (Africa/Casablanca). Nothing was los",
+      "startedAt": 1789129240737,
+      "seconds": 3
     },
     {
       "id": "plan:t3/briefs",
@@ -38,26 +45,102 @@
       "milestone": true,
       "group": "plan:t3",
       "target": "t3",
+      "status": "skipped",
+      "detail": "running while the architecture is designed"
+    },
+    {
+      "id": "deps/lake-0",
+      "label": "Check the project builds",
+      "group": "deps",
+      "groupLabel": "Lean project · lean/",
+      "status": "done",
+      "detail": "Build completed successfully (756 jobs).",
+      "startedAt": 1789129242093,
+      "seconds": 5
+    },
+    {
+      "id": "surface:theorem/brief-0",
+      "label": "Tex2lean/Model/Theorem.lean — Write Tex2lean/Model/Theorem.lean",
+      "group": "surface:theorem",
+      "series": "surface",
+      "transient": true,
+      "stage": "proof",
+      "groupLabel": "Write Theorem",
+      "status": "failed",
+      "detail": "You've hit your weekly limit · resets 8pm (Africa/Casablanca)",
+      "startedAt": 1789129028054,
+      "seconds": 202
+    },
+    {
+      "id": "run:t3:statement/statement",
+      "label": "`Tex2lean.Model.bFredholm_prop_2_4` is stated in Lean",
+      "stage": "theorem",
+      "milestone": true,
+      "group": "run:t3:statement",
+      "target": "t3",
+      "groupLabel": "Statement · proposition",
+      "status": "done",
+      "detail": "Tex2lean/Model/Theorem.lean:57"
+    },
+    {
+      "id": "run:t3/built",
+      "label": "The project builds",
+      "stage": "proof",
+      "transient": true,
+      "group": "run:t3",
+      "target": "t3",
+      "groupLabel": "Formalize · proposition",
+      "status": "done",
+      "detail": "checked before the statement was shown",
+      "startedAt": 1789129537355,
+      "seconds": 0
+    },
+    {
+      "id": "run:t3/rounds",
+      "label": "Close every goal under `Tex2lean.Model.bFredholm_prop_2_4`",
+      "stage": "proof",
+      "milestone": true,
+      "group": "run:t3",
+      "target": "t3",
+      "status": "running",
+      "detail": "reading what is still open",
+      "startedAt": 1789129537702
+    },
+    {
+      "id": "run:t3/handoff",
+      "label": "Check it against the paper",
+      "stage": "proof",
+      "milestone": true,
+      "group": "run:t3",
+      "target": "t3",
       "status": "pending"
     },
     {
-      "id": "restatement:agent/brief-0",
-      "label": ".blueprint/in-progress/restatement.agent.json — Work out what the paper claims",
-      "group": "restatement:agent",
-      "series": "surface",
-      "stage": "theorem",
-      "groupLabel": "Read the paper",
-      "status": "running",
-      "detail": "searching for Drazin|Fredholm|socle",
-      "startedAt": 1789128218649
+      "id": "round:t3:1/brief-0",
+      "label": "Tex2lean/Model/Theorem.lean — Prove Tex2lean.Model.bFredholm_prop_2_4",
+      "group": "round:t3:1",
+      "target": "t3",
+      "series": "round",
+      "transient": true,
+      "stage": "proof",
+      "groupLabel": "Round 1 · proposition",
+      "status": "failed",
+      "detail": "You've hit your weekly limit · resets 8pm (Africa/Casablanca)",
+      "startedAt": 1789129543589,
+      "seconds": 18
     },
     {
-      "id": "deps/copy",
-      "label": "Copy this machine's Lean libraries",
-      "group": "deps",
-      "groupLabel": "Lean project · lean/",
-      "status": "running",
-      "startedAt": 1789128220194
+      "id": "round:t3:1/brief-1",
+      "label": "Tex2lean/Model/Theorem.lean — Divide the work for 3 agents",
+      "group": "round:t3:1",
+      "target": "t3",
+      "series": "round",
+      "transient": true,
+      "stage": "proof",
+      "status": "failed",
+      "detail": "You've hit your weekly limit · resets 8pm (Africa/Casablanca)",
+      "startedAt": 1789129545238,
+      "seconds": 16
     }
   ],
   "notes": {},

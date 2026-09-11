@@ -1,9 +1,9 @@
 {
   "schema": "tex2lean.lease/1",
   "host": "editor",
-  "pid": 5472,
+  "pid": 5816,
   "machine": "BRKANI-I",
-  "what": "blueprint target",
-  "takenAt": "2026-09-11T12:03:35.811Z",
-  "seenAt": "2026-09-11T12:04:57.523Z"
+  "what": "resume run",
+  "takenAt": "2026-09-11T12:33:46.683Z",
+  "seenAt": "2026-09-11T12:35:26.786Z"
 }

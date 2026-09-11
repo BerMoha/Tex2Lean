@@ -48,7 +48,7 @@
       "stage": "theorem",
       "groupLabel": "Read the paper",
       "status": "running",
-      "detail": "searching for .blueprint/**/*",
+      "detail": "searching for Drazin|Fredholm|socle",
       "startedAt": 1789128218649
     },
     {

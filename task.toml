@@ -1,0 +1,5 @@
+[task]
+name = "afterquery/drazin-theorem"
+domain = "mathematical-sciences"
+field = "formal-mathematics-theorem-proving"
+gpus = 0

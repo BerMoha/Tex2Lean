@@ -1,43 +1,45 @@
 schema_version = "1.4"
+
 artifacts = ["/workspace/authoring/Tex2lean/Model/Theorem.lean"]
 
 [task]
 name = "afterquery/drazin-theorem"
-description = "Lean 4 formalization of Proposition 2.4 regarding Drazin invertibility at index 1."
-authors = [{ name = "Mohammed Berkani", email = "author@example.com" }]
-keywords = ["lean4", "drazin", "ring-theory", "direct-sum"]
+description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4 and Mathlib."
+authors = [{ name = "Mohamed Berkani", email = "berkanimoha@gmail.com" }]
+keywords = ["lean4", "mathlib", "drazin-inverse", "ring-theory", "direct-sum"]
 
 [metadata]
-author_name = "Mohammed Berkani"
-author_email = "author@example.com"
-author_organization = "University"
-author_profile = "https://github.com"
+author_name = "Mohamed Berkani"
+author_email = "berkanimoha@gmail.com"
+author_organization = "Independent Researcher"
+author_profile = "https://github.com/BerMoha"
 conflicts_of_interest = "None"
 domain = "mathematical-sciences"
 field = "formal-mathematics"
 subfield = "operator-theory"
 category = "Science"
 subcategory = "Formal Mathematics & Theorem Proving"
-tags = ["lean4", "ring-theory"]
-expert_time_estimate_hours = 2
-relevant_experience = "Mathematics and interactive theorem proving in Lean 4."
-difficulty_explanation = "The problem requires defining a custom Drazin invertibility structure with index k=1 and proving a structured direct sum decomposition of a ring, which requires exact manipulation of Mathlib ring axioms."
-solution_explanation = "The reference solution sets up a robust algebraic structure for Drazin invertibility, builds explicit range and kernel conditions, and implements a complete constructive bidirectional proof for the direct sum."
-verification_explanation = "Verification runs `lake build` on the custom target module to guarantee that Lean 4 fully compiles and validates the formal proof without any placeholders or remaining sorry steps."
-
-[agent]
-timeout_sec = 3600
+tags = ["lean4", "mathlib", "drazin-inverse", "ring-theory"]
+expert_time_estimate_hours = 4
+relevant_experience = "Research mathematician specializing in operator theory and Drazin invertibility, with hands-on experience formalizing algebraic structures in Lean 4 and Mathlib."
+difficulty_explanation = "The task requires defining a custom Drazin invertibility structure with index k=1 in Lean 4 and proving that a ring decomposes as a direct sum of the range and kernel of a Drazin invertible element. This demands precise manipulation of non-commutative ring axioms in Mathlib, careful construction of set-theoretic membership proofs, and managing Lean 4's type system for algebraic structures. The proof involves multiple dependent steps: establishing key algebraic identities such as a(ab) = a via commutativity and the aba axiom, constructing decomposition witnesses, and proving both the spanning property and the trivial intersection. Agents typically struggle with the non-commutative rewriting chains and the interplay between multiplicative and additive reasoning."
+solution_explanation = "The reference solution defines an IsDrazinInvertible structure encoding the three Drazin conditions (bab=b, ab=ba, aba=a), introduces set-theoretic range and kernel definitions, then proves the decomposition theorem in two parts. Part 1 decomposes any x as abx + (x - abx) with explicit witnesses and derives a(ab) = a from commutativity and the aba condition. Part 2 shows the intersection is trivial via the chain a*t = (aba)*t = (ab)(at) = (ba)(at) = 0."
+verification_explanation = "Verification compiles the submitted Lean 4 file with lake build targeting the module Tex2lean.Model.Theorem, then builds a separate checker module that type-checks the theorem's signature against the required statement. Lean's kernel is the ground truth: a file that compiles has every proof term verified for logical correctness. The verifier also rejects files containing sorry placeholders."
 
 [verifier]
+timeout_sec = 1800.0
 environment_mode = "separate"
 
 [verifier.environment]
 network_mode = "no-network"
 
+[agent]
+timeout_sec = 3600
+
 [environment]
-build_timeout_sec = 1800.0
-cpus = 2
+build_timeout_sec = 3600.0
+cpus = 4
 memory_mb = 8192
-storage_mb = 20480
+storage_mb = 40960
 gpus = 0
 network_mode = "public"

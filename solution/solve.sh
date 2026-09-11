@@ -1,3 +1,4 @@
 #!/bin/bash
-cd lean
+cd /workspace/authoring
 lake build Tex2lean.Model.Theorem
+

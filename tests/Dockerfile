@@ -4,9 +4,12 @@ FROM leanprover/lean4:v4.33.0
 USER root
 WORKDIR /workspace
 
+# Copy the entire workspace first
 COPY . .
 
-RUN mkdir -p /tests && cp tests/test.sh /tests/test.sh && chmod +x /tests/test.sh
+# Explicitly use the Docker COPY command to mount the test script into the /tests/ directory
+COPY tests/test.sh /tests/test.sh
+RUN chmod +x /tests/test.sh
 
 RUN cd authoring && \
     if [ ! -f lakefile.toml ] && [ ! -f lakefile.lean ]; then \
@@ -16,5 +19,6 @@ RUN cd authoring && \
         echo 'rev = "v4.33.0"' >> lakefile.toml; \
     fi && \
     lake update
+
 
 

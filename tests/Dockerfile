@@ -1,4 +1,3 @@
-
 FROM leanprover/lean4:v4.33.0
 
 USER root
@@ -19,6 +18,3 @@ RUN cd authoring && \
         echo 'rev = "v4.33.0"' >> lakefile.toml; \
     fi && \
     lake update
-
-
-

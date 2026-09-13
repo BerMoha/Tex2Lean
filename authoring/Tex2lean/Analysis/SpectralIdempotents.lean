@@ -74,7 +74,7 @@ theorem exists_idempotents_of_groupInverse {c d : A} (hcdc : c * d * c = c)
 /-! ### Run record
 Newest first. History, not instruction — what this file claims is above.
 
-* r1 · proved · the idempotent pair `cd`, `e - cd` with all six conditions; no `sorry`
+* r1 · proved · the idempotent pair `cd`, `e - cd` with all six conditions; fully proved
 -/
 
 end Tex2lean

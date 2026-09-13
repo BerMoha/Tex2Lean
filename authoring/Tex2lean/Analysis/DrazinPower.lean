@@ -107,7 +107,7 @@ theorem drazinInvertible_of_pow_groupInverse {a d : A} {n : ℕ} (hn : 0 < n)
 Newest first. History, not instruction — what this file claims is above.
 
 * r1 · proved · both transfers between Drazin invertibility of `a` and group
-  invertibility of `a ^ n`; no `sorry`
+  invertibility of `a ^ n`; fully proved
 -/
 
 end Tex2lean

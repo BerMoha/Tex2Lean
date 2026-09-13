@@ -58,7 +58,7 @@ theorem drazin_characterization_proof (a : A) :
 Newest first. History, not instruction — what this file claims is above.
 
 * r1 · proved · capstone assembled from `Analysis/GroupInverse`,
-  `Analysis/DrazinPower` and `Analysis/SpectralIdempotents`; no `sorry`.  The route
+  `Analysis/DrazinPower` and `Analysis/SpectralIdempotents`; fully proved.  The route
   through `Model/Pseudocode` was abandoned: `Model/Pseudocode` imports
   `Analysis/PseudocodeProof`, which imports `Model/Theorem`, so importing it here is a
   module cycle — and that file derives the Pseudocode statements *from* this capstone.

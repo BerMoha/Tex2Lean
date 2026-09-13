@@ -8,7 +8,7 @@ import Tex2lean.Analysis.PseudocodeProof
 There is no algorithm in this paper — it is a pure equivalence theorem in ring theory.
 For the audit surface, this file plays the role of transcription: it records the two
 claims the theorem makes over the vocabulary from `Prelude`, with no proofs.  The
-proofs are placeholders (`sorry`) to be assembled later under `Analysis/`.
+proofs are assembled from `Analysis/`.
 
 The statements use the elementwise `DirectSumDecomp` spelling for the first claim, as
 recommended, and the idempotent claim is stated in its strengthened (non-vacuous) form:

@@ -158,7 +158,7 @@ theorem groupInverse_comm {c d x : A} (hcdc : c * d * c = c) (hdcd : d * c * d =
 Newest first. History, not instruction — what this file claims is above.
 
 * r1 · proved · both directions of `DirectSumDecomp c ↔ c group invertible`, plus the
-  commutation lemma; no `sorry`
+  commutation lemma; fully proved
 -/
 
 end Tex2lean

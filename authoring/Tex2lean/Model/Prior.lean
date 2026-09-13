@@ -4,7 +4,7 @@
 The results this proof takes from prior work — cited, standard, or folklore —
 stated as the hypotheses they are. `Prior` is a field per borrowed result, and the
 theorem carries it as `(hprior : Prior)`, so what was granted is in the statement
-rather than in a `sorry` somewhere under it.
+rather than hidden somewhere under it.
 
 It is empty because nothing has been surveyed yet. The pass that reads the
 paper for what the proof leans on fills it in; until then the theorem assumes

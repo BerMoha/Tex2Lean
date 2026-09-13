@@ -1,10 +1,25 @@
 schema_version = "1.4"
 
-artifacts = ["/workspace/authoring/Tex2lean/Model/Theorem.lean"]
+artifacts = [
+  "/workspace/authoring/Tex2lean/Model/Prelude.lean",
+  "/workspace/authoring/Tex2lean/Model/Prior.lean",
+  "/workspace/authoring/Tex2lean/Model/Theorem.lean",
+  "/workspace/authoring/Tex2lean/Model/Pseudocode.lean",
+  "/workspace/authoring/Tex2lean/Analysis/GroupInverse.lean",
+  "/workspace/authoring/Tex2lean/Analysis/GroupInvertibleIffDirectSumDecomp.lean",
+  "/workspace/authoring/Tex2lean/Analysis/DrazinPower.lean",
+  "/workspace/authoring/Tex2lean/Analysis/DrazinIffPowGroupInvertible.lean",
+  "/workspace/authoring/Tex2lean/Analysis/SpectralIdempotents.lean",
+  "/workspace/authoring/Tex2lean/Analysis/IdempotentsOfGroupInverse.lean",
+  "/workspace/authoring/Tex2lean/Analysis/IdempotentsOfDirectSumDecomp.lean",
+  "/workspace/authoring/Tex2lean/Analysis/PseudocodeProof.lean",
+  "/workspace/authoring/Tex2lean/Analysis/TheoremProof.lean",
+  "/workspace/authoring/Tex2lean/Meta/ModelClosure.lean",
+]
 
 [task]
 name = "afterquery/drazin-theorem"
-description = "Formalize Proposition 2.4 regarding Drazin invertibility inside a Ring framework using Lean 4 and Mathlib."
+description = "Formalize the Drazin invertibility characterization theorem (both directions) in Lean 4 with Mathlib: a is Drazin invertible iff A = a^n A ⊕ N(a^n), with spectral idempotent decomposition."
 authors = [{ name = "Mohamed Berkani", email = "berkanimoha@gmail.com" }]
 keywords = ["lean4", "mathlib", "drazin-inverse", "ring-theory", "direct-sum"]
 
@@ -22,9 +37,9 @@ subcategory = "Formal Mathematics & Theorem Proving"
 tags = ["lean4", "mathlib", "drazin-inverse", "ring-theory"]
 expert_time_estimate_hours = 4
 relevant_experience = "Research mathematician specializing in operator theory and Drazin invertibility, with hands-on experience formalizing algebraic structures in Lean 4 and Mathlib."
-difficulty_explanation = "The task requires defining a custom Drazin invertibility structure with index k=1 in Lean 4 and proving that a ring decomposes as a direct sum of the range and kernel of a Drazin invertible element. This demands precise manipulation of non-commutative ring axioms in Mathlib, careful construction of set-theoretic membership proofs, and managing Lean 4's type system for algebraic structures. The proof involves multiple dependent steps: establishing key algebraic identities such as a(ab) = a via commutativity and the aba axiom, constructing decomposition witnesses, and proving both the spanning property and the trivial intersection. Agents typically struggle with the non-commutative rewriting chains and the interplay between multiplicative and additive reasoning."
-solution_explanation = "The reference solution defines an IsDrazinInvertible structure encoding the three Drazin conditions (bab=b, ab=ba, aba=a), introduces set-theoretic range and kernel definitions, then proves the decomposition theorem in two parts. Part 1 decomposes any x as abx + (x - abx) with explicit witnesses and derives a(ab) = a from commutativity and the aba condition. Part 2 shows the intersection is trivial via the chain a*t = (aba)*t = (ab)(at) = (ba)(at) = 0."
-verification_explanation = "Verification compiles the submitted Lean 4 file with lake build targeting the module Tex2lean.Model.Theorem, then builds a separate checker module that type-checks the theorem's signature against the required statement. Lean's kernel is the ground truth: a file that compiles has every proof term verified for logical correctness. The verifier also rejects files containing sorry placeholders."
+difficulty_explanation = "The task requires formalizing a full biconditional characterization of Drazin invertibility in a non-commutative ring, along with a spectral idempotent decomposition. The forward direction (Drazin invertible ⇒ direct sum) requires reducing from general index k to k=1 via power manipulation, then constructing decomposition witnesses. The converse (direct sum ⇒ Drazin invertible) is substantially harder: it requires building idempotents from the decomposition of 1, proving they are complementary, showing cA = c²A, constructing the group inverse from a factorization p = cb, and verifying all three Drazin conditions. The proof spans ~800 lines across multiple files and demands mastery of non-commutative ring reasoning, Submodule lattice operations, and Mathlib's opposite-module machinery for right ideals."
+solution_explanation = "The reference solution is a modular development of 14 Lean files. Model/Prelude defines the vocabulary (rightMul, rightAnn, DirectSumDecomp, IsDrazinInvertible). Analysis/GroupInverse proves the core equivalence: DirectSumDecomp c ↔ c has a group inverse. Analysis/DrazinPower handles the reduction from Drazin index k to group invertibility of a^(k+1). Analysis/SpectralIdempotents extracts idempotents p=cd, q=1-cd from a group inverse. Analysis/TheoremProof assembles the capstone. The proof uses noncomm_ring and abel tactics for algebraic simplification, and the Submodule lattice API for ideal comparisons."
+verification_explanation = "Verification runs lake build on the full project to compile all modules, then builds a separate Checker module that type-checks the capstone theorem drazin_characterization against the required biconditional statement. Lean's kernel verifies logical correctness. The verifier also rejects files containing sorry placeholders."
 
 [verifier]
 timeout_sec = 1800.0

@@ -11,16 +11,21 @@ def test_file_exists():
 
 
 def test_no_sorry():
-    """The submitted file must not contain sorry placeholders."""
-    with open(THEOREM_PATH) as f:
-        content = f.read()
-    assert not re.search(r'\bsorry\b', content), "File contains sorry placeholder"
+    """No file in the development may contain sorry placeholders."""
+    lean_dir = "/workspace/authoring/Tex2lean"
+    for root, _, files in os.walk(lean_dir):
+        for f in files:
+            if f.endswith(".lean"):
+                path = os.path.join(root, f)
+                with open(path) as fh:
+                    content = fh.read()
+                assert not re.search(r'\bsorry\b', content), f"{path} contains sorry"
 
 
 def test_lean_compiles():
-    """The submitted file must compile with lake build."""
+    """The full project must compile with lake build."""
     result = subprocess.run(
-        ["lake", "build", "Tex2lean.Model.Theorem"],
+        ["lake", "build"],
         cwd="/workspace/authoring",
         capture_output=True,
         text=True,
@@ -30,7 +35,7 @@ def test_lean_compiles():
 
 
 def test_theorem_signature():
-    """The theorem must match the required mathematical statement."""
+    """The capstone theorem must match the required mathematical statement."""
     result = subprocess.run(
         ["lake", "build", "Tex2lean.Checker"],
         cwd="/workspace/authoring",

@@ -1,18 +1,33 @@
-# Formalization of Drazin Invertibility (Proposition 2.4)
+# Formalization of Drazin Invertibility Characterization
 
-In ring theory, an element $a$ of a unital ring $A$ is said to be Drazin invertible (with index $k = 1$) if there exists an element $b \in A$ satisfying $bab = b$, $ab = ba$, and $aba = a$.
+In ring theory, an element $a$ of a unital ring $A$ is said to be **Drazin invertible** if there exist $b \in A$ and $k \in \mathbb{N}$ such that $bab = b$, $ab = ba$, and $a^k b a = a^k$.
 
-Your task is to formalize the following classical result in Lean 4 with Mathlib:
+Your task is to formalize the following theorem in Lean 4 with Mathlib:
 
-**Proposition.** If $a$ is Drazin invertible in $A$ (with $k = 1$), then $A = aA \oplus \ker(a)$. That is, every element of $A$ decomposes as a sum of an element in the range $aA = \{at \mid t \in A\}$ and an element in the kernel $\ker(a) = \{x \in A \mid ax = 0\}$, and this decomposition is unique (the intersection $aA \cap \ker(a)$ is trivial).
+**Theorem.** Let $A$ be a ring with unit $e$, and let $a \in A$. Then $a$ is Drazin invertible in $A$ **if and only if** there exists a positive integer $n$ such that $A = a^n A \oplus N(a^n)$, where $N(a^n) = \{x \in A \mid a^n x = 0\}$. In this case, there exist two idempotents $p, q$ such that $e = p + q$, $pq = qp = 0$, $A = pA \oplus qA$, $pA = a^n A$, and $N(a^n) = qA$.
 
-Write a complete Lean 4 file at `/workspace/authoring/Tex2lean/Model/Theorem.lean` that compiles successfully with `lake build Tex2lean.Model.Theorem` using the project already configured at `/workspace/authoring`. The file must contain no `sorry` placeholders.
+## What to produce
 
-Your file must define the following names in the root namespace (outside any `namespace` block), over a variable `{A : Type*} [Ring A]`:
+Write a complete Lean 4 development rooted at `/workspace/authoring/Tex2lean/` that compiles successfully with `lake build` using the project already configured at `/workspace/authoring`. No file may contain `sorry` placeholders.
 
-- A structure `IsDrazinInvertible (a : A)` with fields `b : A`, `bab : b * a * b = b`, `comm : a * b = b * a`, `aba : a * b * a = a`.
-- A definition `range_a (a : A) : Set A` equal to `{ x | ∃ t, x = a * t }`.
-- A definition `kernel_a (a : A) : Set A` equal to `{ x | a * x = 0 }`.
-- A theorem `bFredholm_prop_2_4` proving that given `(a : A)` and `(h : IsDrazinInvertible a)`, we have `(∀ x : A, ∃ y ∈ range_a a, ∃ z ∈ kernel_a a, x = y + z) ∧ (range_a a ∩ kernel_a a = {0})`.
+The development must define the following under the `Tex2lean` namespace, over a variable `{A : Type*} [Ring A]`:
+
+### Definitions (in `Model/Prelude.lean`)
+
+- `rightMul (a : A) : Submodule Aᵐᵒᵖ A` — the right ideal $aA$.
+- `rightAnn (a : A) : Submodule Aᵐᵒᵖ A` — the right annihilator $N(a) = \{x \mid ax = 0\}$.
+- `DirectSumDecomp (c : A) : Prop` — the elementwise statement that $A = cA \oplus N(c)$.
+- `IsDrazinInverse (a b : A) (k : ℕ) : Prop` — $b$ is a Drazin inverse of $a$ of index $\leq k$.
+- `IsGroupInverse (a b : A) : Prop` — the $k = 1$ case.
+- `IsGroupInvertible (a : A) : Prop` — existence of a group inverse.
+- `IsDrazinInvertible (a : A) : Prop` — existence of a Drazin inverse.
+
+### Capstone theorem (in `Model/Theorem.lean`)
+
+- `drazin_characterization (hprior : Prior) (a : A)` proving:
+  1. `IsDrazinInvertible a ↔ ∃ n : ℕ, 0 < n ∧ DirectSumDecomp (a ^ n)` — the equivalence.
+  2. For every positive $n$ with `DirectSumDecomp (a ^ n)`, there exist idempotents $p, q$ with $p + q = 1$, $pq = qp = 0$, `IsCompl (rightMul p) (rightMul q)`, `rightMul p = rightMul (a ^ n)`, and `rightAnn (a ^ n) = rightMul q`.
+
+The proof may be split across multiple files under `Tex2lean/Analysis/`. You are free to choose the proof architecture.
 
 You have 3600 seconds to complete this task. Do not cheat by using online solutions or hints specific to this task.

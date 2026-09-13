@@ -1,53 +1,58 @@
-import Mathlib.Algebra.Ring.Defs
-import Mathlib.Data.Set.Basic
-import Mathlib.Tactic.Abel
+import Tex2lean.Model.Prior
+import Tex2lean.Model.Prelude
+import Tex2lean.Analysis.TheoremProof
+import Mathlib.Algebra.Module.Submodule.Lattice
 
 /-!
-# Drazin Invertibility — Proposition 2.4
+# Model/Theorem: the theorem
 
-Assume that `a` is Drazin invertible in `A`. Then there exists `b ∈ A` and `k ∈ ℕ`
-such that `bab = b`, `ab = ba`, `aᵏba = aᵏ`. With `k = 1`, we show `A = aA ⊕ N(a)`.
+This is the single capstone statement of the development.  It packages the two
+claims of the paper into one theorem over the real objects defined in
+`Model/Prelude`, with the empty `Prior` assumption carried as the first
+hypothesis as required by the audit-surface discipline.
+
+The first conjunct is the equivalence: Drazin invertibility of `a` is equivalent
+to the existence of a positive power `a ^ n` whose right-multiple ideal and right
+annihilator split `A`.  The second conjunct is the strengthened (non-vacuous)
+idempotent form: from such a splitting at `n`, one obtains idempotents `p` and `q`
+with `p + q = 1`, `p*q = q*p = 0`, `A = pA ⊕ qA`, and in fact `pA = (a^n)A` and
+`qA = N(a^n)`.  The last two equalities are what make the idempotent claim
+non-vacuous.
+
+The statement is written over `[Ring A]`, not `[CommRing A]`: the argument never
+uses commutativity of the ambient ring, only that `a` commutes with its Drazin
+inverse.
+
+The proof is `Tex2lean.drazin_characterization_proof` in `Analysis/TheoremProof`,
+which chains the pivot `A = cA ⊕ N(c) ↔ c is group invertible`
+(`Analysis/GroupInverse`) through the paper's reduction to `k = 1`
+(`Analysis/DrazinPower`) and the idempotent pair `p = cd`, `q = e - cd`
+(`Analysis/SpectralIdempotents`).
 -/
 
-section Drazin
+namespace Tex2lean
 
 variable {A : Type*} [Ring A]
 
-structure IsDrazinInvertible (a : A) where
-  b : A
-  bab : b * a * b = b
-  comm : a * b = b * a
-  aba : a * b * a = a
+/-- The capstone theorem: the Drazin invertibility equivalence together with the
+strengthened spectral idempotent decomposition. -/
+theorem drazin_characterization (hprior : Prior) (a : A) :
+    (IsDrazinInvertible a ↔ ∃ n : ℕ, 0 < n ∧ DirectSumDecomp (a ^ n)) ∧
+    (∀ n : ℕ, 0 < n → DirectSumDecomp (a ^ n) →
+      ∃ p q : A,
+        IsIdempotentElem p ∧ IsIdempotentElem q ∧
+          p + q = 1 ∧ p * q = 0 ∧ q * p = 0 ∧
+          IsCompl (rightMul p) (rightMul q) ∧
+          rightMul p = rightMul (a ^ n) ∧ rightAnn (a ^ n) = rightMul q) :=
+  drazin_characterization_proof a
 
-def range_a (a : A) : Set A := { x | ∃ t, x = a * t }
-def kernel_a (a : A) : Set A := { x | a * x = 0 }
+#print axioms drazin_characterization
 
-theorem bFredholm_prop_2_4 (a : A) (h : IsDrazinInvertible a) :
-    (∀ x : A, ∃ y ∈ range_a a, ∃ z ∈ kernel_a a, x = y + z) ∧
-    (range_a a ∩ kernel_a a = {0}) := by
-  constructor
-  · intro x
-    use a * h.b * x
-    constructor
-    · exact ⟨h.b * x, mul_assoc a h.b x⟩
-    · use x - a * h.b * x
-      constructor
-      · show a * (x - a * h.b * x) = 0
-        have key : a * (a * h.b) = a := by
-          rw [h.comm, ← mul_assoc]; exact h.aba
-        rw [mul_sub, ← mul_assoc a (a * h.b) x, key, sub_self]
-      · abel
-  · ext x
-    simp only [Set.mem_inter_iff, Set.mem_setOf_eq, Set.mem_singleton_iff]
-    constructor
-    · rintro ⟨⟨t, rfl⟩, hx2⟩
-      have h1 : (h.b * a) * (a * t) = 0 := by
-        rw [mul_assoc h.b a (a * t), hx2, mul_zero]
-      calc a * t = (a * h.b * a) * t := by rw [h.aba]
-        _ = (a * h.b) * (a * t) := by rw [mul_assoc (a * h.b) a t]
-        _ = (h.b * a) * (a * t) := by rw [h.comm]
-        _ = 0 := h1
-    · rintro rfl
-      exact ⟨⟨0, by rw [mul_zero]⟩, by rw [mul_zero]⟩
+/-! ### Run record
+Newest first. History, not instruction — what this file claims is above.
 
-end Drazin
+* r1 · proved · closed by `drazin_characterization_proof`; axioms are exactly
+  `propext`, `Classical.choice`, `Quot.sound`
+-/
+
+end Tex2lean

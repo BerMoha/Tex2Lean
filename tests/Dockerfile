@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git curl python
 RUN pip3 install --break-system-packages pytest==8.4.1 pytest-json-ctrf==0.3.5 || pip3 install pytest==8.4.1 pytest-json-ctrf==0.3.5
 WORKDIR /workspace/authoring
 COPY lakefile.lean lean-toolchain Tex2lean.lean ./
-RUN mkdir -p Tex2lean/Model Tex2lean/Analysis Tex2lean/Meta
+RUN mkdir -p /workspace/authoring/Tex2lean/Model /workspace/authoring/Tex2lean/Analysis /workspace/authoring/Tex2lean/Meta
 RUN lake update
 RUN lake exe cache get || true
 RUN lake build

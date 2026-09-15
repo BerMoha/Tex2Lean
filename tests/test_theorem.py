@@ -2,7 +2,7 @@ import subprocess
 import os
 import re
 
-THEOREM_PATH = "/workspace/authoring/Tex2lean/Model/Theorem.lean"
+THEOREM_PATH = "/workspace/authoring/Tex2lean/DrazinCharacterization.lean"
 
 
 def test_file_exists():

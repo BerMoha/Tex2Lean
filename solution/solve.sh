@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 cd /workspace/authoring
 mkdir -p Tex2lean
 cat > Tex2lean/DrazinCharacterization.lean << 'LEAN_EOF'
@@ -492,6 +492,18 @@ Newest first. History, not instruction — what this file claims is above.
   `Analysis/PseudocodeProof`, which imports `Model/Theorem`, so importing it here is a
   module cycle — and that file derives the Pseudocode statements *from* this capstone.
 -/
-end Tex2lean
+/-- The capstone theorem: the Drazin invertibility equivalence together with the
+strengthened spectral idempotent decomposition.  The (empty) `Prior` assumption is
+carried as the first hypothesis, as required by the audit-surface discipline. -/
+theorem drazin_characterization (hprior : Prior) (a : A) :
+    (IsDrazinInvertible a ↔ ∃ n : ℕ, 0 < n ∧ DirectSumDecomp (a ^ n)) ∧
+    (∀ n : ℕ, 0 < n → DirectSumDecomp (a ^ n) →
+      ∃ p q : A,
+        IsIdempotentElem p ∧ IsIdempotentElem q ∧
+          p + q = 1 ∧ p * q = 0 ∧ q * p = 0 ∧
+          IsCompl (rightMul p) (rightMul q) ∧
+          rightMul p = rightMul (a ^ n) ∧ rightAnn (a ^ n) = rightMul q) :=
+  drazin_characterization_proof a
 
+end Tex2lean
 LEAN_EOF

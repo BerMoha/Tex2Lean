@@ -1,20 +1,7 @@
 schema_version = "1.4"
 
 artifacts = [
-  "/workspace/authoring/Tex2lean/Model/Prelude.lean",
-  "/workspace/authoring/Tex2lean/Model/Prior.lean",
-  "/workspace/authoring/Tex2lean/Model/Theorem.lean",
-  "/workspace/authoring/Tex2lean/Model/Pseudocode.lean",
-  "/workspace/authoring/Tex2lean/Analysis/GroupInverse.lean",
-  "/workspace/authoring/Tex2lean/Analysis/GroupInvertibleIffDirectSumDecomp.lean",
-  "/workspace/authoring/Tex2lean/Analysis/DrazinPower.lean",
-  "/workspace/authoring/Tex2lean/Analysis/DrazinIffPowGroupInvertible.lean",
-  "/workspace/authoring/Tex2lean/Analysis/SpectralIdempotents.lean",
-  "/workspace/authoring/Tex2lean/Analysis/IdempotentsOfGroupInverse.lean",
-  "/workspace/authoring/Tex2lean/Analysis/IdempotentsOfDirectSumDecomp.lean",
-  "/workspace/authoring/Tex2lean/Analysis/PseudocodeProof.lean",
-  "/workspace/authoring/Tex2lean/Analysis/TheoremProof.lean",
-  "/workspace/authoring/Tex2lean/Meta/ModelClosure.lean",
+  "/workspace/authoring/Tex2lean/DrazinCharacterization.lean",
 ]
 
 [task]

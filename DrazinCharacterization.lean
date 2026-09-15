@@ -1,7 +1,3 @@
-﻿#!/bin/bash
-cd /workspace/authoring
-mkdir -p Tex2lean
-cat > Tex2lean/DrazinCharacterization.lean << 'LEAN_EOF'
 import Mathlib.Algebra.Group.Opposite
 import Mathlib.Algebra.Module.Opposite
 import Mathlib.Algebra.Module.Submodule.Basic
@@ -493,5 +489,3 @@ Newest first. History, not instruction — what this file claims is above.
   module cycle — and that file derives the Pseudocode statements *from* this capstone.
 -/
 end Tex2lean
-
-LEAN_EOF

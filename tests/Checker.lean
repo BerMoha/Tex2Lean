@@ -1,4 +1,4 @@
-import Tex2lean.Model.Theorem
+import Tex2lean.DrazinCharacterization
 
 example {A : Type*} [Ring A] (a : A) :
     (Tex2lean.IsDrazinInvertible a ↔ ∃ n : ℕ, 0 < n ∧ Tex2lean.DirectSumDecomp (a ^ n)) ∧

@@ -1,0 +1,28 @@
+1 | import Mathlib.Algebra.Group.Opposite
+2 | import Mathlib.Algebra.Module.Opposite
+3 | import Mathlib.Algebra.Module.Submodule.Basic
+4 | import Mathlib.Algebra.Module.Submodule.Lattice
+5 | import Mathlib.Algebra.Ring.Idempotent
+6 | import Mathlib.Tactic.Abel
+7 | 
+8 | /-!
+9 | # DrazinCharacterization: monolithic formalization
+10 | 
+11 | Everything the task asks for, in one module: the vocabulary of the theorem, the
+12 | pivot `A = cA ⊕ N(c) ↔ c is group invertible`, the paper's reduction from a general
+13 | Drazin index to the group-invertible case, the complementary spectral idempotents,
+14 | and the capstone `drazin_characterization`.
+15 | 
+16 | Assembled verbatim from the `Tex2lean` development modules
+17 | `Model/Prelude`, `Model/Prior`, `Analysis/GroupInverse`, `Analysis/DrazinPower`,
+18 | `Analysis/SpectralIdempotents` and `Analysis/TheoremProof`.
+19 | -/
+20 | 
+21 | namespace Tex2lean
+22 | 
+23 | variable {A : Type*} [Ring A]
+24 | 
+25 | -- Model/Prelude
+26 | 
+27 | /-!
+28 | # Model/Prelude: the vocabulary of the theorem

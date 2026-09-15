@@ -1,0 +1,14 @@
+✖ [883/884] Building Tex2lean.DrazinCharacterization (199s)
+trace: .> LEAN_PATH=C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\build\lib\lean c:\Users\Berkani\.elan\toolchains\leanprover--lean4---v4.33.0\bin\lean.exe C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\Tex2lean\DrazinCharacterization.lean -o C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\build\lib\lean\Tex2lean\DrazinCharacterization.olean -i C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\build\lib\lean\Tex2lean\DrazinCharacterization.ilean -c C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\build\ir\Tex2lean\DrazinCharacterization.c --setup C:\Users\Berkani\Documents\GitHub\Tex2Lean\verify\.lake\build\ir\Tex2lean\DrazinCharacterization.setup.json --json
+error: Tex2lean/DrazinCharacterization.lean:79:0: unexpected token '#'; expected command
+error: Tex2lean/DrazinCharacterization.lean:82:21: unexpected token '`('; expected ':'
+error: Tex2lean/DrazinCharacterization.lean:86:11: unexpected token; expected ':'
+warning: Tex2lean/DrazinCharacterization.lean:494:33: Variable name `hprior` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hprior
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Tex2lean.DrazinCharacterization

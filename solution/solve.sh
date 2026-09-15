@@ -10,6 +10,25 @@ import Mathlib.Algebra.Ring.Idempotent
 import Mathlib.Tactic.Abel
 
 /-!
+# DrazinCharacterization: monolithic formalization
+
+Everything the task asks for, in one module: the vocabulary of the theorem, the
+pivot `A = cA ⊕ N(c) ↔ c is group invertible`, the paper's reduction from a general
+Drazin index to the group-invertible case, the complementary spectral idempotents,
+and the capstone `drazin_characterization`.
+
+Assembled verbatim from the `Tex2lean` development modules
+`Model/Prelude`, `Model/Prior`, `Analysis/GroupInverse`, `Analysis/DrazinPower`,
+`Analysis/SpectralIdempotents` and `Analysis/TheoremProof`.
+-/
+
+namespace Tex2lean
+
+variable {A : Type*} [Ring A]
+
+-- Model/Prelude
+
+/-!
 # Model/Prelude: the vocabulary of the theorem
 
 Right ideals are encoded as `Submodule Aᵐᵒᵖ A`, using Mathlib's opposite-module
@@ -17,10 +36,6 @@ instance for the right action. The statement-level form of the decomposition is 
 elementwise `DirectSumDecomp`, so the headline does not force the referee to accept the
 `Submodule` encoding merely to parse the claim.
 -/
-
-namespace Tex2lean
-
-variable {A : Type*} [Ring A]
 
 /-! ## Vocabulary -/
 
@@ -79,18 +94,25 @@ def IsGroupInvertible (a : A) : Prop := ∃ b : A, IsGroupInverse a b
 def IsDrazinInvertible (a : A) : Prop :=
   ∃ (b : A) (k : ℕ), IsDrazinInverse a b k
 
+-- Model/Prior
 
+/-!
 # What this development assumes
+
 The results this proof takes from prior work — cited, standard, or folklore —
 stated as the hypotheses they are. `Prior` is a field per borrowed result, and the
 theorem carries it as `(hprior : Prior)`, so what was granted is in the statement
 rather than hidden somewhere under it.
+
 It is empty because nothing has been surveyed yet. The pass that reads the
 paper for what the proof leans on fills it in; until then the theorem assumes
 nothing and `hprior` is discharged by `⟨⟩`.
 -/
+
 /-- Every result this development takes from prior work rather than proving. -/
 structure Prior : Prop where
+
+-- Analysis/GroupInverse
 
 /-!
 # Analysis/GroupInverse: the splitting is exactly group invertibility
@@ -113,8 +135,6 @@ justifies that is carried out on `c = a ^ n` in `Analysis/DrazinPower`).
   its element commutes with.  The paper uses it silently when it passes between `a` and
   `a ^ n`.
 -/
-
-
 
 /-- Unfolding of membership in the right ideal `cA`.
 
@@ -250,6 +270,8 @@ Newest first. History, not instruction — what this file claims is above.
   commutation lemma; fully proved
 -/
 
+-- Analysis/DrazinPower
+
 /-!
 # Analysis/DrazinPower: passing between `a` and `a ^ n`
 
@@ -265,8 +287,6 @@ positive power `a ^ n` yields a Drazin inverse of `a` of index `n`.
   `n > 0`, then `a ^ (n-1) * d` is a Drazin inverse of `a` of index `n`.  Here the
   commutation `da = ad` is supplied by `groupInverse_comm`.
 -/
-
-
 
 /-- A Drazin inverse of `a` of index `k` gives a group inverse of `a ^ (k+1)`.
 
@@ -358,6 +378,8 @@ Newest first. History, not instruction — what this file claims is above.
   invertibility of `a ^ n`; fully proved
 -/
 
+-- Analysis/SpectralIdempotents
+
 /-!
 # Analysis/SpectralIdempotents: the two idempotents of the splitting
 
@@ -371,8 +393,6 @@ from the group inverse `d` of `c` supplied by `Analysis/GroupInverse`, as `p = c
 `pA = cA` and `N(c) = qA` immediate, which is what turns the idempotent claim from a
 vacuous one (`p = e, q = 0` satisfies the bare conditions) into the paper's.
 -/
-
-
 
 /-- From a group inverse `d` of `c`, the paper's two idempotents `p = cd` and `q = e - cd`,
 together with `pA = cA` and `N(c) = qA`.
@@ -432,6 +452,8 @@ Newest first. History, not instruction — what this file claims is above.
 * r1 · proved · the idempotent pair `cd`, `e - cd` with all six conditions; fully proved
 -/
 
+-- Analysis/TheoremProof
+
 /-!
 # Analysis/TheoremProof: assembling the capstone
 
@@ -455,8 +477,6 @@ This file carries no ring computation of its own; it only chains those four lemm
 the conjunction the audit surface states.  The `Prior` hypothesis of the capstone is empty
 and is not used.
 -/
-
-
 
 /-- The two claims of the paper's theorem, packaged as one conjunction: the Drazin
 equivalence together with the strengthened spectral idempotent decomposition at every
@@ -492,9 +512,10 @@ Newest first. History, not instruction — what this file claims is above.
   `Analysis/PseudocodeProof`, which imports `Model/Theorem`, so importing it here is a
   module cycle — and that file derives the Pseudocode statements *from* this capstone.
 -/
+
 /-- The capstone theorem: the Drazin invertibility equivalence together with the
 strengthened spectral idempotent decomposition.  The (empty) `Prior` assumption is
-carried as the first hypothesis, as required by the audit-surface discipline. -/
+carried as the first hypothesis, so what was granted is visible in the statement. -/
 theorem drazin_characterization (hprior : Prior) (a : A) :
     (IsDrazinInvertible a ↔ ∃ n : ℕ, 0 < n ∧ DirectSumDecomp (a ^ n)) ∧
     (∀ n : ℕ, 0 < n → DirectSumDecomp (a ^ n) →

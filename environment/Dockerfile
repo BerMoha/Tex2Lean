@@ -7,5 +7,4 @@ WORKDIR /workspace/authoring
 COPY lakefile.lean lean-toolchain Tex2lean.lean ./
 RUN mkdir -p /workspace/authoring/Tex2lean/Model /workspace/authoring/Tex2lean/Analysis /workspace/authoring/Tex2lean/Meta
 RUN lake update
-RUN lake exe cache get || true
-RUN lake build
+RUN lake exe cache get

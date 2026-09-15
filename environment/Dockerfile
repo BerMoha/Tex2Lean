@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git curl ca-cer
 RUN curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | bash -s -- -y --default-toolchain none
 ENV PATH="/root/.elan/bin:${PATH}"
 WORKDIR /workspace/authoring
-COPY lakefile.lean lean-toolchain Tex2lean.lean ./
+COPY environment/lakefile.lean environment/lean-toolchain environment/Tex2lean.lean ./
 RUN mkdir -p /workspace/authoring/Tex2lean/Model /workspace/authoring/Tex2lean/Analysis /workspace/authoring/Tex2lean/Meta
 RUN lake update
 RUN lake exe cache get || true

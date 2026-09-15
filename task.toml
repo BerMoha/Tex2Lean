@@ -1,8 +1,12 @@
 schema_version = "1.4"
 
 artifacts = [
-  "/workspace/authoring/Tex2lean/DrazinCharacterization.lean",
+  "/workspace/authoring/Tex2lean/DrazinCharacterization.lean"
 ]
+
+
+
+
 
 [task]
 name = "afterquery/drazin-theorem"

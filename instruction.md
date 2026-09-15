@@ -30,4 +30,4 @@ The development must define the following under the `Tex2lean` namespace, over a
 
 The proof may be split across multiple files under `Tex2lean/Analysis/`. You are free to choose the proof architecture.
 
-You have 3600 seconds to complete this task. Do not cheat by using online solutions
+You have 3600 seconds to complete this task. Do not cheat by using online solutions or hints specific to this task.

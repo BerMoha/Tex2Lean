@@ -1,0 +1,11 @@
+name = "tex2lean"
+defaultTargets = ["Tex2lean"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.33.0"
+
+[[lean_lib]]
+name = "Tex2lean"

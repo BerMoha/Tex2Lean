@@ -5,7 +5,7 @@ RUN curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init
 ENV PATH="/root/.elan/bin:${PATH}"
 RUN pip3 install --break-system-packages pytest==8.4.1 pytest-json-ctrf==0.3.5 || pip3 install pytest==8.4.1 pytest-json-ctrf==0.3.5
 WORKDIR /workspace/authoring
-COPY lakefile.lean lean-toolchain Tex2lean.lean ./
+COPY lakefile.toml lean-toolchain Tex2lean.lean ./
 RUN mkdir -p /workspace/authoring/Tex2lean/Model /workspace/authoring/Tex2lean/Analysis /workspace/authoring/Tex2lean/Meta
 RUN lake update
 RUN lake exe cache get
